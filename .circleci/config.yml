@@ -27,9 +27,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       
-
-      - cypress/run
-
+      - snyk/scan:
+        fail-on-issues: false
+        monitor-on-build: false
+        severity-threshold: high
+      
       - run: yarn lint
 
       - run: yarn size
@@ -38,12 +40,6 @@ jobs:
 
       - run: yarn ci:cypress-run
 
-      - snyk/scan:
-          fail-on-issues: false
-          monitor-on-build: false
-          severity-threshold: high
-
-      
       - run: yarn build
       
       - aws-s3/sync:
