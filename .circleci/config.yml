@@ -1,7 +1,8 @@
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
+
   snyk: snyk/snyk@0.0.8
+  cypress: cypress-io/cypress@1
   aws-s3: circleci/aws-s3@1.0.11
 jobs:
   build:
@@ -27,6 +28,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       
 
+      - cypress/run
 
       - run: yarn lint
 
