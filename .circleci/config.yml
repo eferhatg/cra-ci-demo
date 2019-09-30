@@ -1,5 +1,6 @@
 version: 2.1
 orbs:
+  cypress: cypress-io/cypress@1
   snyk: snyk/snyk@0.0.8
   aws-s3: circleci/aws-s3@1.0.11
 jobs:
