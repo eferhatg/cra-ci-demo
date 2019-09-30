@@ -32,7 +32,11 @@ jobs:
       
       - run: yarn test
 
+      - run: yarn ci:cypress-run
+
       - snyk/scan:
           fail-on-issues: false
           monitor-on-build: false
           severity-threshold: high
+
+      
